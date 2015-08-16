@@ -62,7 +62,7 @@ class Html extends TagLib{
                 $parseStr   =  '<script type="text/javascript" src="__ROOT__/Public/Js/KindEditor/kindeditor.js"></script><script type="text/javascript"> KE.show({ id : \''.$id.'\'  ,urlType : "absolute"});</script><textarea id="'.$id.'" style="'.$style.'" name="'.$name.'" >'.$content.'</textarea>';
                 break;
             case 'UEDITOR' :
-                $parseStr   = '<js href="__PUBLIC__/js/jquery-2.0.2.js" /><js href="__PUBLIC__/ueditor/ueditor.config.js" /><js href="__PUBLIC__/ueditor/ueditor.all.min.js" /><script>$(function(){var ue = UE.getEditor("'.$id.'",{serverUrl :"{:U(' . '"Ueditor/Index/index"' . ')}"});})</script><script id="'. $id .'" name="'.$name.'" style="'. $style .'" class="'. $class .'" type="text/plain">'  . $content .'</script>';
+                $parseStr   = '<js href="__PUBLIC__/ueditor/ueditor.config.js" /><js href="__PUBLIC__/ueditor/ueditor.all.min.js" /><script>$(function(){var ue = UE.getEditor("'.$id.'",{serverUrl :"{:U(' . '"Ueditor/Index/index"' . ')}"});})</script><script id="'. $id .'" name="'.$name.'" style="'. $style .'" class="'. $class .'" type="text/plain">'  . $content .'</script>';
                 break;
             default :
                 $parseStr  =  '<textarea id="'.$id.'" style="'.$style.'" name="'.$name.'" >'.$content.'</textarea>';
