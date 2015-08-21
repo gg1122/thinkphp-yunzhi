@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace Think\Template\TagLib;
 use Think\Template\TagLib;
+use Think\Page;
 /**
  * Html标签库驱动
  */
@@ -23,7 +24,8 @@ class Html extends TagLib{
         'list'      => array('attr'=>'id,pk,style,action,actionlist,show,datasource,checkbox','close'=>0),
         'imagebtn'  => array('attr'=>'id,name,value,type,style,click','close'=>0),
         'checkbox'  => array('attr'=>'name,checkboxes,checked,separator','close'=>0),
-        'radio'     => array('attr'=>'name,radios,checked,separator','close'=>0)
+        'radio'     => array('attr'=>'name,radios,checked,separator','close'=>0),
+        'page'      =>array('attr'=>'id,name,class,totalnumber','close'=>1),
         );
 
     /**
@@ -34,7 +36,7 @@ class Html extends TagLib{
      * @return string|void
      */
     public function _editor($tag,$content) {
-        $id			=	!empty($tag['id'])?$tag['id']: '_editor';
+        $id		=	!empty($tag['id'])?$tag['id']: '_editor';
         $name   	=	$tag['name'];
         $style      =   !empty($tag['style'])?$tag['style']:'';
         $class      =	!empty($tag['class'])?$tag['class']:'';
@@ -68,6 +70,22 @@ class Html extends TagLib{
                 $parseStr  =  '<textarea id="'.$id.'" style="'.$style.'" name="'.$name.'" >'.$content.'</textarea>';
         }
 
+        return $parseStr;
+    }
+    /**
+     * page标签解析
+     * 格式： <html:page id="" class="" totalnumber=""/>
+     * @access public
+     * @param array $tag 标签属性
+     * @return string|void
+     */
+    public function _page($tag){
+        $id         =   !empty($tag['id'])?$tag['id']: '_page';
+        $name       =   $tag['name'];
+        $class      =   !empty($tag['class'])?$tag['class']:'';
+        $totalnumber = !empty($tag['totalnumber'])?$tag['class']:'0';
+        $page = new Page(100);
+        $parseStr =  $page->show();        
         return $parseStr;
     }
 

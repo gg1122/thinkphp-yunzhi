@@ -1,9 +1,13 @@
 <?php
 namespace Home\Controller;
+use Think\Page;
 class IndexController extends HomeController
 {
 	public function indexAction()
 	{
-            $this->display('index');
+		$page = new Page(100);
+		$str = $page->show();
+		$this->assign('page',$str);
+            		$this->display('index');
 	}
 }
