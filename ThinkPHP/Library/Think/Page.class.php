@@ -97,18 +97,18 @@ class Page{
 
         //下一页
         $down_row  = $this->nowPage + 1;
-        $down_page = ($down_row <= $this->totalPages) ? '<li><a href="' . $this->url($down_row) . '"aria-label="Next">' . $this->config['next'] . '</a>' : '';
+        $down_page = ($down_row <= $this->totalPages) ? '<li><a href="' . $this->url($down_row) . '" aria-label="Next">' . $this->config['next'] . '</a>' : '';
 
         //第一页
         $the_first = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage - $now_cool_page) >= 1){
-            $the_first = '<a class="first" href="' . $this->url(1) . '">' . $this->config['first'] . '</a>';
+            $the_first = '<li><a class="first" href="' . $this->url(1) . '">' . $this->config['first'] . '</a></li>';
         }
 
         //最后一页
         $the_end = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage + $now_cool_page) < $this->totalPages){
-            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['last'] . '</a>';
+            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . "...".$this->config['last'] . '</a>';
         }
 
         //数字连接
@@ -130,7 +130,7 @@ class Page{
                 }
             }else{
                 if($page > 0 && $this->totalPages != 1){
-                    $link_page .= '<li><a><span class="current">' . $page . '</a></li></span>';
+                    $link_page .= '<li><a style="background:#B6BDCF"><span class="current">' . $page . '</span></a></li>';
                 }
             }
         }

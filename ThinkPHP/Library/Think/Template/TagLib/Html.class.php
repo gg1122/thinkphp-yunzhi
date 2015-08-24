@@ -84,8 +84,8 @@ class Html extends TagLib{
         $name       =   $tag['name'];
         $class      =   !empty($tag['class'])?$tag['class']:'';
         $totalnumber = !empty($tag['totalnumber'])?$tag['class']:'0';
-        $page = new Page(100);
-        $parseStr =  $page->show();        
+        $page = new Page($tag['totalnumber']);
+        $parseStr =  $page->show();
         return $parseStr;
     }
 
